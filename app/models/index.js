@@ -24,5 +24,13 @@ db.sequelize = sequelize;
 
 
 db.user = require('./user.model.js')(sequelize,Sequelize)
+db.product = require('./product.model.js')(sequelize,Sequelize)
+db.category = require('./category.model.js')(sequelize,Sequelize)
+
+db.category.hasMany(db.product, { as: "product" });
+db.product.belongsTo(db.category, {
+  foreignKey: "categoryId",
+  as: "category",
+})
 
 module.exports = db;

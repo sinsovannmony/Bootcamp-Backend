@@ -12,11 +12,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    role: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    phone_number: {
+    created_date: {
       type: DataTypes.STRING,
     },
   });
