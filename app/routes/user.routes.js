@@ -7,5 +7,6 @@ module.exports = (app) => {
     router.post("/register/", userController.register);
     router.post("/login/", userController.login);
     router.post("/refresh-token", userController.refresh_token);
+    router.post("/forgotpassword", userController.forget_password);
     router.get("/secure", checkToken, userController.security);
 };

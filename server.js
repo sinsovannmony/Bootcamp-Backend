@@ -5,7 +5,7 @@ app.use(cors());
 app.use(express.json());
 
 const db = require("./app/models");
-db.sequelize.sync();
+db.sequelize.sync({ force: true });
 
 require("./app/routes/user.routes")(app);
 require("./app/routes/category.routes")(app);
