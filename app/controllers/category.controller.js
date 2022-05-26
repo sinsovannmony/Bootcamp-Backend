@@ -1,5 +1,8 @@
 const db = require("../models");
 const Category = db.category;
+const date = require("date-and-time");
+let time = new Date();
+let now = date.format(time, "YYYY-MM-DD");
 
 exports.category_create = async (req, res) => {
     try {
@@ -9,7 +12,7 @@ exports.category_create = async (req, res) => {
         const category = new Category({
             name: req.body.category_name,
             description: req.body.description,
-            created_date: "xx-xx-xxxx",
+            created_date: now,
         });
         await category.save();
         const category_detail = await Category.findOne({ where: { id: category.id } });
