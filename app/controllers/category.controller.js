@@ -9,9 +9,11 @@ exports.category_create = async (req, res) => {
         const categorydatas = await Category.findOne({ where: { name: req.body.category_name } });
         if (categorydatas)
             return res.status(400).json({ message: "this category already exist. Please recheck the input again" });
+        const imgsrc = "http://127.0.0.1:3000/uploads/category_img/" + req.body.fieldname;
         const category = new Category({
             name: req.body.category_name,
             description: req.body.description,
+            image: imgsrc,
             created_date: now,
         });
         await category.save();

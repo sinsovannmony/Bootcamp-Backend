@@ -60,11 +60,13 @@ exports.initial_category = async () => {
             Category.create({
                 name: "phone",
                 description: "all item in this category is phone",
+                image: "image_url",
                 created_date: "01-01-2022",
             });
             Category.create({
                 name: "laptop",
                 description: "all item in this category is laptop",
+                image: "image_url",
                 created_date: "01-01-2022",
             });
         }
