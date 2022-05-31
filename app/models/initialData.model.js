@@ -8,7 +8,7 @@ exports.initial_product = async () => {
         if (!productExisting) {
             Product.create({
                 name: "iphone",
-                quantity: 1,
+                quantity: 5,
                 price: 1200,
                 categoryId: 1,
                 available: true,
@@ -28,11 +28,21 @@ exports.initial_product = async () => {
             });
             Product.create({
                 name: "Huawei",
-                quantity: 1,
-                price: 1200,
+                quantity: 3,
+                price: 190,
                 categoryId: 1,
                 available: true,
                 description: "android product that call huawei",
+                image: "image_url",
+                created_date: "01-01-2022",
+            });
+            Product.create({
+                name: "Oppo",
+                quantity: 2,
+                price: 200,
+                categoryId: 1,
+                available: true,
+                description: "android product that call oppo",
                 image: "image_url",
                 created_date: "01-01-2022",
             });

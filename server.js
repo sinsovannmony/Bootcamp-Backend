@@ -6,7 +6,7 @@ app.use(cors());
 app.use(express.json());
 
 const db = require("./app/models");
-db.sequelize.sync({ force: false }).then(() => {
+db.sequelize.sync({ force: true }).then(() => {
     initData.initial_category();
     initData.initial_product();
 });
