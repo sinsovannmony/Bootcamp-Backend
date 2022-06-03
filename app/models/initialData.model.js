@@ -11,7 +11,7 @@ exports.initial_product = async () => {
                     name: 'Nike Air Max',
                     quantity: 1,
                     price: 120,
-                    categoryId: 1,
+                    categoryId: 2,
                     available: true,
                     description: 'Nike, Air Max, Fashion, Shoes',                      
                     image: 'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/skwgyqrbfzhu6uyeh0gg/air-max-270-mens-shoes-KkLcGR.png',
@@ -66,15 +66,39 @@ exports.initial_category = async () => {
         //if not, create it.
         if (!categoryExisting) {
             Category.create({
-                name: "phone",
-                description: "all item in this category is phone",
-                image: "image_url",
+                name: "Electronics",
+                description: "Electronics Devices",
+                image: "https://img.icons8.com/stickers/100/undefined/multiple-devices.png",
                 created_date: "01-01-2022",
             });
             Category.create({
-                name: "laptop",
-                description: "all item in this category is laptop",
-                image: "image_url",
+                name: "Footwear",
+                description: "All shoe",
+                image: "https://img.icons8.com/stickers/100/000000/pair-of-sneakers.png",
+                created_date: "01-01-2022",
+            });
+            Category.create({
+                name: "Beauty",
+                description: "beauty products",
+                image: "https://img.icons8.com/stickers/100/000000/lip-gloss.png",
+                created_date: "01-01-2022",
+            });
+            Category.create({
+                name: "Apparel",
+                description: "suit and formal clothes",
+                image: "https://img.icons8.com/stickers/100/000000/formal-outfit.png",
+                created_date: "01-01-2022",
+            });
+            Category.create({
+                name: "Tableware",
+                description: "table kits",
+                image: "https://img.icons8.com/stickers/100/000000/tableware.png",
+                created_date: "01-01-2022",
+            });
+            Category.create({
+                name: "Tools",
+                description: "capenter tools",
+                image: "https://img.icons8.com/stickers/100/000000/full-tool-storage-box-.png",
                 created_date: "01-01-2022",
             });
         }
