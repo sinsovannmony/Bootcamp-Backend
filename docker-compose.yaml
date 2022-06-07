@@ -1,0 +1,24 @@
+05f9cf68fa0aversion: '3.1'
+
+services:
+
+  db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: 1234
+
+  adminer:
+    image: adminer
+    ports:
+      - 8080:8080
+
+# .env
+# TOKEN_SECRET = thisismysecretkey
+# REFRESH_TOKEN_SECRET = thisismyrefreshtoken
+# DB_HOST = localhost
+# DB_USER = postgres
+# DB_PORT = 5432
+# DB_PASSWORD = 1234
+# DB_NAME = postgres
