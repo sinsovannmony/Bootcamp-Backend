@@ -9,4 +9,5 @@ module.exports = (app) => {
     router.post("/refresh-token", userController.refresh_token);
     router.post("/forgotpassword", userController.forget_password);
     router.get("/secure", checkToken, userController.security);
+    router.get("/permission", userController.permission);
 };

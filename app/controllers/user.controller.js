@@ -92,3 +92,11 @@ exports.security = async (req, res) => {
         return res.status(500).json({ message: error.message });
     }
 };
+
+exports.permission = async (req, res) => {
+    try {
+        return res.status(200).json({ message: "Allow permission from React Native" });
+    } catch (error) {
+        return res.status(500).json({ message: error.message });
+    }
+};
