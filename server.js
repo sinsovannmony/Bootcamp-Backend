@@ -8,10 +8,10 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 const db = require("./app/models");
-// db.sequelize.sync({ force: true }).then(() => {
-//     initData.initial_category();
-//     initData.initial_product();
-// });
+db.sequelize.sync({ force: true }).then(() => {
+    initData.initial_category();
+    initData.initial_product();
+});
 
 require("./app/routes/user.routes")(app);
 require("./app/routes/category.routes")(app);
