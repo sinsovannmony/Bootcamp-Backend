@@ -16,7 +16,7 @@ exports.product_create = async (req, res) => {
             categoryId: req.body.categoryId,
             available: true,
             description: req.body.description,
-            image: "image_url",
+            image: "https://nayemdevs.com/wp-content/uploads/2020/03/default-product-image.png",
             created_date: now,
         });
         await product.save();
