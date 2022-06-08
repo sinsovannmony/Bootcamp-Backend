@@ -8,7 +8,7 @@ exports.product_create = async (req, res) => {
     try {
         const productdatas = await Product.findOne({ where: { name: req.body.product_name } });
         if (productdatas) return res.status(400).json({ message: "product already exist" });
-        const imgsrc = 'http://127.0.0.1:3000/uploads/product_img/' + req.body.fieldname;
+        const imgsrc = "http://127.0.0.1:3000/uploads/product_img/" + req.body.fieldname;
         const product = new Product({
             name: req.body.product_name,
             quantity: req.body.quantity,
@@ -16,7 +16,7 @@ exports.product_create = async (req, res) => {
             categoryId: req.body.categoryId,
             available: true,
             description: req.body.description,
-            image: imgsrc,
+            image: "image_url",
             created_date: now,
         });
         await product.save();
