@@ -2,14 +2,13 @@ const db = require("../models");
 const Category = db.category;
 const date = require("date-and-time");
 let time = new Date();
-let now = date.format(time, "YYYY-MM-DD");
+let now = date.format(time, "DD-MM-YYYY");
 
 exports.category_create = async (req, res) => {
     try {
         const categorydatas = await Category.findOne({ where: { name: req.body.category_name } });
         if (categorydatas)
             return res.status(400).json({ message: "this category already exist. Please recheck the input again" });
-        const imgsrc = "http://127.0.0.1:3000/uploads/category_img/" + req.body.fieldname;
         const category = new Category({
             name: req.body.category_name,
             description: req.body.description,
@@ -36,7 +35,7 @@ exports.category_query = async (req, res) => {
 exports.category_query_by_id = async (req, res) => {
     try {
         const { categoryId } = req.params;
-        const category_datas = await Category.findOne({ where: { id: categoryId } });
+        const category_datas = await Category.findOne({ where: { id: categoryId }, include: ["product"] });
         if (!category_datas) return res.status(400).json({ message: "category not found" });
         return res.status(200).json(category_datas);
     } catch (error) {
