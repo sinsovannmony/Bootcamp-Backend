@@ -1,11 +1,15 @@
 const db = require("../models");
 const Cart = db.cart;
+const User = db.user;
 const date = require("date-and-time");
 let time = new Date();
 let now = date.format(time, "DD-MM-YYYY");
 
 exports.cart_create = async (req, res) => {
     try {
+        const { id } = req.userData;
+        const user = await User.findOne({ where: { id: id } });
+        if (!user) return res.status(400).json({ message: "user not found" });
         const cartdatas = await Cart.findOne({ where: { name: req.body.cart_name } });
         if (cartdatas) return res.status(400).json({ message: "cart already exist" });
         const cart = new Cart({
@@ -17,6 +21,7 @@ exports.cart_create = async (req, res) => {
             description: req.body.description,
             image: "img_url",
             created_date: now,
+            userId: id,
         });
         await cart.save();
         const cart_detail = await Cart.findOne({ where: { id: cart.id } });
@@ -39,6 +44,19 @@ exports.cart_query_by_id = async (req, res) => {
     try {
         const { cartId } = req.params;
         const cart_datas = await Cart.findOne({ where: { id: cartId } });
+        if (!cart_datas) return res.status(400).json({ message: "cart not found" });
+        return res.status(200).json(cart_datas);
+    } catch (error) {
+        return res.status(500).json({ message: error.message });
+    }
+};
+
+exports.cart_query_base_on_user = async (req, res) => {
+    try {
+        const { id } = req.userData;
+        const user = await User.findOne({ where: { id: id } });
+        if (!user) return res.status(400).json({ message: "user not found" });
+        const cart_datas = await Cart.findAll({ where: { userId: id } });
         if (!cart_datas) return res.status(400).json({ message: "cart not found" });
         return res.status(200).json(cart_datas);
     } catch (error) {

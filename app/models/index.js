@@ -27,6 +27,7 @@ db.product = require("./product.model.js")(sequelize, Sequelize);
 db.category = require("./category.model.js")(sequelize, Sequelize);
 db.cart = require("./cart.model.js")(sequelize, Sequelize);
 db.tag = require("./tag.model.js")(sequelize, Sequelize);
+db.history_product = require("./historyProduct.model.js")(sequelize, Sequelize);
 
 db.category.hasMany(db.product, { as: "product" });
 db.product.belongsTo(db.category, {
@@ -38,6 +39,12 @@ db.product.hasMany(db.tag, { as: "tag" });
 db.tag.belongsTo(db.product, {
     foreignKey: "productId",
     as: "product",
+});
+
+db.user.hasMany(db.cart, { as: "cart" });
+db.cart.belongsTo(db.user, {
+    foreignKey: "userId",
+    as: "user",
 });
 
 module.exports = db;

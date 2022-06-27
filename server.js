@@ -11,7 +11,7 @@ app.use(fileupload());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 const db = require("./app/models");
-db.sequelize.sync({ force: true }).then(() => {
+db.sequelize.sync({ force: false }).then(() => {
     initData.initial_category();
     initData.initial_product();
     initData.initial_tag();
@@ -22,6 +22,7 @@ require("./app/routes/category.routes")(app);
 require("./app/routes/product.routes")(app);
 require("./app/routes/cart.routes")(app);
 require("./app/routes/tag.routes")(app);
+require("./app/routes/historyProduct.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 3000;

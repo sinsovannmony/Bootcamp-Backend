@@ -7,6 +7,7 @@ module.exports = (app) => {
     router.post("/create_cart/", cartController.cart_create);
     router.get("/query_cart/", cartController.cart_query);
     router.get("/query_cart_by_id/:cartId", cartController.cart_query_by_id);
+    router.get("/query_cart_base_on_user/", checkAuth, cartController.cart_query_base_on_user);
     router.post("/edit_cart/:cartId", cartController.edit_cart);
     router.delete("/delete_cart/:cartId", cartController.delete_cart);
 };
