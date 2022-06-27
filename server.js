@@ -11,7 +11,7 @@ app.use(fileupload());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 const db = require("./app/models");
-db.sequelize.sync({ force: false }).then(() => {
+db.sequelize.sync({ force: true }).then(() => {
     initData.initial_category();
     initData.initial_product();
     initData.initial_tag();
