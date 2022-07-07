@@ -1,11 +1,15 @@
 const db = require("../models");
 const History_Product = db.history_product;
+const User = db.user;
 const date = require("date-and-time");
 let time = new Date();
 let now = date.format(time, "DD-MM-YYYY");
 
 exports.product_history_create = async (req, res) => {
     try {
+        const { id } = req.userData;
+        const user = await User.findOne({ where: { id: id } });
+        if (!user) return res.status(400).json({ message: "user not found" });
         const history_product = new History_Product({
             name: req.body.product_name,
             quantity: req.body.quantity,
@@ -15,6 +19,7 @@ exports.product_history_create = async (req, res) => {
             description: req.body.description,
             image: "https://nayemdevs.com/wp-content/uploads/2020/03/default-product-image.png",
             created_date: now,
+            userId: id,
         });
         await history_product.save();
         const product_history_detail = await History_Product.findOne({ where: { id: history_product.id } });
@@ -28,6 +33,19 @@ exports.product_history_query = async (req, res) => {
     try {
         const history_product_datas = await History_Product.findAll();
         return res.status(200).json(history_product_datas);
+    } catch (error) {
+        return res.status(500).json({ message: error.message });
+    }
+};
+
+exports.product_history_query_base_on_user = async (req, res) => {
+    try {
+        const { id } = req.userData;
+        const user = await User.findOne({ where: { id: id } });
+        if (!user) return res.status(400).json({ message: "user not found" });
+        const productHistory_datas = await History_Product.findAll({ where: { userId: id } });
+        if (!productHistory_datas) return res.status(400).json({ message: "product history not found" });
+        return res.status(200).json(productHistory_datas);
     } catch (error) {
         return res.status(500).json({ message: error.message });
     }

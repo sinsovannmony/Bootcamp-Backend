@@ -10,7 +10,7 @@ exports.cart_create = async (req, res) => {
         const { id } = req.userData;
         const user = await User.findOne({ where: { id: id } });
         if (!user) return res.status(400).json({ message: "user not found" });
-        const cartdatas = await Cart.findOne({ where: { name: req.body.cart_name } });
+        const cartdatas = await Cart.findOne({ where: { name: req.body.cart_name, userId: id } });
         if (cartdatas) return res.status(400).json({ message: "cart already exist" });
         const cart = new Cart({
             name: req.body.cart_name,

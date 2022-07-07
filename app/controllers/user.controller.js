@@ -16,7 +16,7 @@ exports.register = async (req, res) => {
         const user = new User({
             username: req.body.username,
             email: req.body.email,
-            password: hashedPassword,
+            password: req.body.password,
         });
         await user.save();
         const userDetail = await User.findOne({ where: { id: user.id }, attributes: { exclude: ["password"] } });
@@ -32,8 +32,9 @@ exports.login = async (req, res) => {
         if (error) return res.status(400).send(error.details[0].message);
         const user = await User.findOne({ where: { email: req.body.email } });
         if (!user) return res.status(400).json({ message: "incorrect email" });
-        const validate = await bcrypt.compare(req.body.password, user.password);
-        if (!validate) return res.status(400).json({ message: "incorrect password" });
+        // const validate = await bcrypt.compare(req.body.password, user.password);
+        if (req.body.password != user.password) return res.status(400).json({ message: "incorrect password" });
+        // if (!validate) return res.status(400).json({ message: "incorrect password" });
         const token = jwt.sign({ email: user.email, id: user.id }, process.env.TOKEN_SECRET, {
             expiresIn: "15m",
         });

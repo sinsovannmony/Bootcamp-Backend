@@ -12,6 +12,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 const db = require("./app/models");
 db.sequelize.sync({ force: true }).then(() => {
+    initData.initial_user();
     initData.initial_category();
     initData.initial_product();
     initData.initial_tag();

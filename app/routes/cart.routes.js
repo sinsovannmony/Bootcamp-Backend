@@ -4,7 +4,7 @@ module.exports = (app) => {
     var router = require("express").Router();
     app.use("/api/cart", router);
 
-    router.post("/create_cart/", cartController.cart_create);
+    router.post("/create_cart/", checkAuth, cartController.cart_create);
     router.get("/query_cart/", cartController.cart_query);
     router.get("/query_cart_by_id/:cartId", cartController.cart_query_by_id);
     router.get("/query_cart_base_on_user/", checkAuth, cartController.cart_query_base_on_user);

@@ -1,6 +1,7 @@
 const db = require("../models");
 const Product = db.product;
 const Category = db.category;
+const User = db.user;
 const Tag = db.tag;
 
 exports.initial_product = async () => {
@@ -13,6 +14,7 @@ exports.initial_product = async () => {
                 quantity: 1,
                 price: 120,
                 categoryId: 2,
+                userId: 1,
                 available: true,
                 description:
                     "Nike Air is our iconic innovation that uses pressurized air in a durable, flexible membrane to provide lightweight cushioning. The air compresses on impact and then immediately returns to its original shape and volume, ready for the next impact.",
@@ -24,6 +26,7 @@ exports.initial_product = async () => {
                 quantity: 1,
                 price: 1360,
                 categoryId: 1,
+                userId: 1,
                 available: true,
                 description:
                     "Apple's iPhone 13 features a ceramic shield front, Super Retina XDR display with True Tone and an A15 Bionic chip. The first design change users will notice is the smaller notch. After years of using the same-sized notch to house the Face ID components, Apple has finally reduced its size by 20%.",
@@ -35,6 +38,7 @@ exports.initial_product = async () => {
                 quantity: 1,
                 price: 270,
                 categoryId: 1,
+                userId: 2,
                 available: true,
                 description:
                     "KOOMPI is different. By default, it comes with a Linux based Operating System of its own, known as KOOMPI OS. The software is free to use and free to change. No force software update on users. Users can update software at their own time, when desired.",
@@ -46,6 +50,7 @@ exports.initial_product = async () => {
                 quantity: 1,
                 price: 505,
                 categoryId: 1,
+                userId: 3,
                 available: true,
                 description:
                     "The PlayStation 5's main hardware features include a solid-state drive customized for high-speed data streaming to enable significant improvements in storage performance, an AMD GPU capable of 4K resolution display at up to 120 frames per second, hardware-accelerated ray tracing for realistic lighting and reflections",
@@ -149,6 +154,32 @@ exports.initial_tag = async () => {
                 name: "fashion",
                 created_date: "01-01-2022",
                 productId: 2,
+            });
+        }
+    } catch (error) {
+        console.log(error.message);
+    }
+};
+
+exports.initial_user = async () => {
+    try {
+        const userExisting = await User.findOne();
+        //if not, create it.
+        if (!userExisting) {
+            User.create({
+                username: "mony",
+                email: "mony18@kit.edu.kh",
+                password: "12345678",
+            });
+            User.create({
+                username: "vatanak",
+                email: "vatanak18@kit.edu.kh",
+                password: "12345678",
+            });
+            User.create({
+                username: "sovattra",
+                email: "sovattra18@kit.edu.kh",
+                password: "12345678",
             });
         }
     } catch (error) {

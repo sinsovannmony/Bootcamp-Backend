@@ -47,4 +47,16 @@ db.cart.belongsTo(db.user, {
     as: "user",
 });
 
+db.user.hasMany(db.product, { as: "product" });
+db.product.belongsTo(db.user, {
+    foreignKey: "userId",
+    as: "user",
+});
+
+db.user.hasMany(db.history_product, { as: "history_product" });
+db.history_product.belongsTo(db.user, {
+    foreignKey: "userId",
+    as: "user",
+});
+
 module.exports = db;
