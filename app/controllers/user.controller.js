@@ -31,7 +31,7 @@ exports.login = async (req, res) => {
         const { error } = loginValidation(req.body);
         if (error) return res.status(400).send(error.details[0].message);
         const user = await User.findOne({ where: { email: req.body.email } });
-        if (!user) return res.status(400).json({ message: "incorrect email" });
+        if (!user) return res.status(400).json({ message: "email is not correct or registered" });
         // const validate = await bcrypt.compare(req.body.password, user.password);
         if (req.body.password != user.password) return res.status(400).json({ message: "incorrect password" });
         // if (!validate) return res.status(400).json({ message: "incorrect password" });
@@ -42,7 +42,9 @@ exports.login = async (req, res) => {
             expiresIn: "30m",
         });
         refreshTokens.push(refreshToken);
-        return res.status(200).json({ message: "login successfully", AccessToken: token, RefreshToken: refreshToken });
+        return res
+            .status(200)
+            .json({ message: "login successfully", AccessToken: token, RefreshToken: refreshToken, Data: user });
     } catch (error) {
         return res.status(500).json({ message: error.message });
     }
