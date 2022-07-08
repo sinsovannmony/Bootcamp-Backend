@@ -10,4 +10,5 @@ module.exports = (app) => {
     router.post("/forgotpassword", userController.forget_password);
     router.get("/secure", checkToken, userController.security);
     router.get("/permission", userController.permission);
+    router.get("/query_user", userController.query_user);
 };

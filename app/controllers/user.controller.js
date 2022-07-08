@@ -103,3 +103,12 @@ exports.permission = async (req, res) => {
         return res.status(500).json({ message: error.message });
     }
 };
+
+exports.query_user = async (req, res) => {
+    try {
+        const user_data = await User.findAll();
+        return res.status(200).json(user_data);
+    } catch (error) {
+        return res.status(500).json({ message: error.message });
+    }
+};
