@@ -57,6 +57,77 @@ exports.initial_product = async () => {
                 image: "https://image-cdn.hypb.st/https%3A%2F%2Fhypebeast.com%2Fimage%2F2021%2F09%2Fsony-playstation-5-pro-release-rumors-info-000.jpg?w=960&cbr=1&q=90&fit=max",
                 created_date: "01-01-2022",
             });
+            Product.create({
+                name: "Sony WH-1000XM4",
+                quantity: 1,
+                price: 400,
+                categoryId: 1,
+                userId: 1,
+                available: true,
+                description:
+                    "R&A Cycles is proud to offer authentic kits for a unique blend of passion and expertise, delivering maximum comfort, fit, and durability!",
+                image: "https://johnlewis.scene7.com/is/image/JohnLewis/238906544?$rsp-pdp-port-640$",
+                created_date: "01-01-2022",
+            });
+            Product.create({
+                name: "Airpod Pro",
+                quantity: 1,
+                price: 180,
+                categoryId: 2,
+                userId: 2,
+                available: true,
+                description:
+                    "AirPods Pro have been designed to deliver Active Noise Cancellation for immersive sound, Transparency mode so you can hear your surroundings, and a customizable fit for all-day comfort. Just like AirPods, AirPods Pro connect magically to your Apple devices. And they're ready to use right out of the case.",
+                image: "https://www.dimprice.com/image/cache/png/apple-airpods-pro/Apple-airpods-pro-01-550x550.png",
+                created_date: "01-01-2022",
+            });
+            Product.create({
+                name: "IPad Pro M1 12.9",
+                quantity: 1,
+                price: 1090,
+                categoryId: 2,
+                userId: 3,
+                available: true,
+                description:
+                    "The PowerA Fusion Pro may be worth considering if you want to try something that’s as close as you can get to a Switch-equivalent to the Xbox Elite controller. It has customizable analog sticks and optional rear paddle buttons.",
+                image: "https://www.apple.com/newsroom/images/product/ipad/standard/apple_ipad-pro-spring21_lp_04202021.jpg.news_app_ed.jpg",
+                created_date: "01-01-2022",
+            });
+            Product.create({
+                name: "Nike Dunk Low Panda",
+                quantity: 1,
+                price: 450,
+                categoryId: 2,
+                userId: 1,
+                available: true,
+                description: "Best sneaker that we should have and fit with all the outfit and more stylish",
+                image: "https://blog.solebox.com/wp-content/uploads/2022/04/Nikedunklowpanda_blog.jpg",
+                created_date: "01-01-2022",
+            });
+            Product.create({
+                name: "Apple watch series 7 Black",
+                quantity: 1,
+                price: 410,
+                categoryId: 1,
+                userId: 2,
+                available: true,
+                description:
+                    "The aluminum case is lightweight and made from 100 percent recycled aerospace-grade alloy.",
+                image: "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/MKUQ3_VW_PF+watch-45-alum-midnight-nc-7s_VW_PF_WF_CO?wid=1400&hei=1400&trim=1,0&fmt=p-jpg&qlt=95&.v=1632171068000,1631661680000",
+                created_date: "01-01-2022",
+            });
+            Product.create({
+                name: "Mechanical Gaming Keyboard",
+                quantity: 1,
+                price: 120,
+                categoryId: 1,
+                userId: 3,
+                available: true,
+                description:
+                    "Baytion mechanical gaming keyboard is a ultra-compact layout with 61 keys provide you a neat desktop and save more space for mouse movement. Also the Compact design is portable, meeting your demands in home or office.",
+                image: "https://m.media-amazon.com/images/I/61GnUc9e7VL.jpg",
+                created_date: "01-01-2022",
+            });
         }
     } catch (error) {
         console.log(error.message);
